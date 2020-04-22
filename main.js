@@ -21,10 +21,18 @@ function generate() {
 uint2(0x${xHex}, 0x${yHex}),`
 }
 
+function clear() {
+  for (let i = 0; i < 35; i++) {
+    document.getElementById(`checkbox${('0' + i).slice(-2)}`).checked = false
+  }
+}
+
 document.getElementById('text1').addEventListener('input', generate)
 
 for (let i = 0; i < 35; i++) {
   document.getElementById(`checkbox${('0' + i).slice(-2)}`).addEventListener('change', generate)
 }
+
+document.getElementById('clearButton').addEventListener('click', clear)
 
 generate()
