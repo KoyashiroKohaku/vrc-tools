@@ -17,7 +17,7 @@ function generate() {
 
   const comment = document.getElementById('text1').value
 
-  document.getElementById('textarea1').value = `// ${comment} (${x}, ${y})
+  document.getElementById('textarea1').value = `// ${comment} (${x.slice(-3)}, ${y})
 uint2(0x${xHex}, 0x${yHex}),`
 }
 
