@@ -1,0 +1,27 @@
+'use strict'
+
+function generate() {
+  const x =
+    '00000000000000000000000000000' +
+    [...Array(3).keys()]
+      .map((i) => (document.getElementById(`checkbox${('0' + (32 + i)).slice(-2)}`).checked ? '1' : '0'))
+      .reverse()
+      .join('')
+
+  const y = [...Array(32).keys()]
+    .map((i) => (document.getElementById(`checkbox${('0' + i).slice(-2)}`).checked ? '1' : '0'))
+    .reverse()
+    .join('')
+
+  const xHex = ('0000000' + parseInt(x, 2).toString(16)).slice(-8)
+  const yHex = ('0000000' + parseInt(y, 2).toString(16)).slice(-8)
+
+  document.getElementById('textarea1').value = `// (${x}, ${y})
+uint2(0x${xHex}, 0x${yHex}),`
+}
+
+for (let i = 0; i < 35; i++) {
+  document.getElementById(`checkbox${('0' + i).slice(-2)}`).addEventListener('change', generate)
+}
+
+generate()
