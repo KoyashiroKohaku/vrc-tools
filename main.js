@@ -25,6 +25,7 @@ function clear() {
   for (let i = 0; i < 35; i++) {
     document.getElementById(`checkbox${('0' + i).slice(-2)}`).checked = false
   }
+  generate()
 }
 
 document.getElementById('text1').addEventListener('input', generate)
